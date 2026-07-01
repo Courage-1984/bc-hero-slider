@@ -1,0 +1,688 @@
+/**
+ * BC Hero Slider — lightweight, CWV-oriented styles
+ * Scope: .bc-hero (BEM) to avoid theme collisions
+ */
+
+/* -------------------------------------------------------------------------- */
+/* Base layout — reserved space (CLS) + stacking                               */
+/* -------------------------------------------------------------------------- */
+
+.bc-hero {
+  --bc-accent: #38b6b3;
+  --bc-inner-max: 1200px;
+  --bc-hero-pad: clamp(1.25rem, 4vw, 3.5rem);
+  --bc-parallax-person: 12px;
+  --bc-parallax-globe: 18px;
+  --bc-person-drop: clamp(44px, 4.4vw, 68px);
+  /* Glitch transition length — keep bc-hero-slider.js TRANS_MS in sync */
+  --bc-glitch-dur: 1.2s;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  isolation: isolate;
+  color: #fff;
+  font-family: "Avant Garde Next", "ITC Avant Garde Gothic", sans-serif;
+  /* Hero box: panoramic, capped to viewport height */
+  aspect-ratio: 21 / 9;
+  min-height: min(460px, 62vh);
+  max-height: 62vh;
+  background: #0a1628;
+}
+
+@media (max-width: 768px) {
+  .bc-hero {
+    aspect-ratio: 4 / 5;
+    min-height: clamp(24rem, 105vw, 34rem);
+    max-height: none;
+  }
+
+  /* Ensure mobile background always fully covers hero bounds */
+  .bc-hero__slides,
+  .bc-hero__slide,
+  .bc-hero__bg {
+    height: 100%;
+    min-height: inherit;
+  }
+
+  .bc-hero__bg-img {
+    width: 100%;
+    height: 100%;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    object-position: 62% center;
+  }
+
+  .bc-hero__slide::before {
+    background: linear-gradient(
+        180deg,
+        rgba(10, 22, 40, 0.78) 0%,
+        rgba(10, 22, 40, 0.28) 42%,
+        transparent 68%
+      ),
+      linear-gradient(
+        90deg,
+        rgba(10, 22, 40, 0.65) 0%,
+        rgba(10, 22, 40, 0.2) 45%,
+        transparent 78%
+      );
+  }
+}
+
+.bc-hero__slides {
+  position: absolute;
+  inset: 0;
+}
+
+.bc-hero__slide {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 0.28s ease;
+}
+
+.bc-hero__slide.is-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  z-index: 1;
+  transition: opacity 0.35s ease;
+}
+
+/* During glitch: keep visible until animation ends */
+.bc-hero__slide.is-exiting,
+.bc-hero__slide.is-entering {
+  visibility: visible;
+  pointer-events: none;
+  transition: none;
+}
+
+.bc-hero__slide.is-exiting {
+  z-index: 3;
+  opacity: 1;
+}
+
+.bc-hero__slide.is-entering {
+  z-index: 2;
+  opacity: 1;
+}
+
+/* Full-slide legibility: smooth left → right fade (no hard box behind copy) */
+.bc-hero__slide::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    rgba(10, 22, 40, 0.88) 0%,
+    rgba(10, 22, 40, 0.45) 38%,
+    rgba(10, 22, 40, 0.12) 58%,
+    transparent 74%
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/* Layers (absolute; no layout shift from image intrinsic sizes)               */
+/* -------------------------------------------------------------------------- */
+
+.bc-hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.bc-hero__bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.bc-hero__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  /* Light residual tone; primary left read comes from .bc-hero__slide::before */
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    transparent 45%,
+    rgba(6, 18, 38, 0.22) 100%
+  );
+  pointer-events: none;
+}
+
+.bc-hero__inner {
+  position: relative;
+  z-index: 3;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--bc-inner-max);
+  height: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  align-items: stretch;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  padding: var(--bc-hero-pad);
+  padding-bottom: var(--bc-hero-pad);
+}
+
+@media (max-width: 768px) {
+  .bc-hero__inner {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    align-items: end;
+    text-align: center;
+    padding-bottom: var(--bc-hero-pad);
+  }
+
+  .bc-hero__copy {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    align-self: start;
+    padding-bottom: 4.75rem;
+  }
+
+  .bc-hero__accent {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Copy (left)                                                                */
+/* -------------------------------------------------------------------------- */
+
+.bc-hero__copy {
+  position: relative;
+  z-index: 1;
+  max-width: 34rem;
+  align-self: center;
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+
+.bc-hero__accent {
+  width: 3.5rem;
+  height: 4px;
+  background: var(--bc-accent);
+  border-radius: 2px;
+  margin-bottom: 1rem;
+}
+
+.bc-hero__heading {
+  margin: 0 0 0.5rem;
+  font-weight: 700;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+  color: #ffffff;
+}
+
+.bc-hero__sub {
+  margin: 0;
+  font-weight: 400;
+  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+  line-height: 1.45;
+  text-wrap: balance;
+  color: #ffffff;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Visual stack (right) — parallax via translate3d on inner wrappers         */
+/* -------------------------------------------------------------------------- */
+
+.bc-hero__visual {
+  position: relative;
+  height: 100%;
+  min-height: clamp(12rem, 28vw, 22rem);
+  justify-self: center;
+  align-self: stretch;
+  width: min(100%, 32rem);
+}
+
+@media (max-width: 768px) {
+  .bc-hero__visual {
+    justify-self: center;
+    width: min(100%, min(22rem, 88vw));
+    min-height: clamp(12rem, 48vw, 18rem);
+    margin-top: 0.5rem;
+    max-height: 55vmin;
+  }
+}
+
+.bc-hero__layer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  pointer-events: none;
+}
+
+.bc-hero__globe-wrap {
+  /* Behind upper body / shoulder — higher + further left within visual column */
+  inset: auto;
+  left: 50%;
+  right: auto;
+  bottom: 22%;
+  top: auto;
+  width: 88%;
+  max-width: 26rem;
+  height: auto;
+  z-index: 0;
+  opacity: 0.15;
+  transform: translate3d(
+    calc(-50% - clamp(2.25rem, 14vw, 8.5rem) + var(--bc-gx, 0px)),
+    calc(-4% + var(--bc-gy, 0px)),
+    0
+  );
+  will-change: transform;
+}
+
+.bc-hero__person-wrap {
+  position: absolute !important;
+  inset: auto 5% 0 auto !important;
+  top: auto;
+  right: 5% !important;
+  bottom: 0 !important;
+  left: auto;
+  width: 95%;
+  max-width: 28rem;
+  height: auto;
+  max-height: 100%;
+  display: flex !important;
+  align-items: flex-end !important;
+  justify-content: flex-end;
+  align-self: flex-end !important;
+  transform-origin: right bottom;
+  transform: translate3d(var(--bc-px, 0px), calc(var(--bc-py, 0px) + var(--bc-person-drop)), 0);
+  will-change: transform;
+  z-index: 10;
+}
+
+.bc-hero__layer-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  vertical-align: bottom;
+}
+
+.bc-hero__person-wrap .bc-hero__layer-img {
+  position: relative !important;
+  bottom: 0 !important;
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 85vh;
+  object-fit: contain;
+  object-position: bottom center;
+  vertical-align: bottom;
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width: 768px) {
+  .bc-hero {
+    --bc-person-drop: clamp(48px, 10vw, 80px);
+  }
+  .bc-hero__globe-wrap {
+    inset: auto;
+    top: auto;
+    bottom: 18%;
+    width: 82%;
+    max-width: 18rem;
+    height: auto;
+    transform: translate3d(
+      calc(-50% - clamp(1.5rem, 10vw, 5rem) + var(--bc-gx, 0px)),
+      var(--bc-gy, 0px),
+      0
+    );
+  }
+
+  .bc-hero__person-wrap {
+    inset: auto 5% 0 auto !important;
+    right: 5% !important;
+    width: 100%;
+    max-width: none;
+    justify-content: center;
+  }
+
+  .bc-hero__person-wrap .bc-hero__layer-img {
+    width: auto;
+    max-width: min(100%, 20rem);
+    max-height: min(56vh, 24rem);
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Bottom nav                                                                 */
+/* -------------------------------------------------------------------------- */
+
+.bc-hero__nav {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(1rem, 2.5vw, 1.75rem);
+  z-index: 5;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--bc-inner-max);
+  padding-left: var(--bc-hero-pad);
+  padding-right: var(--bc-hero-pad);
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.08em;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.bc-hero__count {
+  min-width: 4.5rem;
+}
+
+.bc-hero__arrows {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.bc-hero__btn,
+.bc-hero__nav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.06);
+  color: #ffffff;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.bc-hero__btn:hover,
+.bc-hero__nav-btn:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.55);
+}
+
+.bc-hero__btn:focus-visible,
+.bc-hero__nav-btn:focus-visible {
+  outline: 2px solid var(--bc-accent);
+  outline-offset: 2px;
+}
+
+.bc-hero__btn svg,
+.bc-hero__nav-btn svg {
+  width: 1rem;
+  height: 1rem;
+  display: block;
+  flex-shrink: 0;
+}
+
+.bc-hero__nav-btn svg path {
+  fill: #ffffff;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Autoplay progress (scaleX only — compositor-friendly)                       */
+/* -------------------------------------------------------------------------- */
+
+.bc-hero__progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  z-index: 6;
+  pointer-events: none;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+.bc-hero__progress-fill {
+  display: block;
+  height: 100%;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: left center;
+  background: var(--bc-accent);
+  will-change: transform;
+}
+
+/* -------------------------------------------------------------------------- */
+/* TV static + glitch (transition)                                              */
+/* -------------------------------------------------------------------------- */
+
+.bc-hero__noise {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  opacity: 0;
+  mix-blend-mode: overlay;
+  background-image: repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.09) 0 1px,
+      transparent 1px 2px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.14) 0 1px,
+      transparent 1px 2px
+    ),
+    repeating-linear-gradient(
+      128deg,
+      rgba(56, 182, 179, 0.08) 0 1px,
+      transparent 1px 3px
+    ),
+    repeating-linear-gradient(
+      -12deg,
+      rgba(255, 255, 255, 0.04) 0 2px,
+      transparent 2px 4px
+    );
+  background-size: 100% 100%, 100% 100%, 80px 80px, 140% 140%;
+}
+
+.bc-hero.is-transitioning .bc-hero__noise {
+  animation: bc-static-flicker var(--bc-glitch-dur) steps(4, end) forwards;
+}
+
+@keyframes bc-static-flicker {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  8% {
+    opacity: 0.92;
+    transform: translate3d(-2.2%, 1.4%, 0) scale(1.018);
+  }
+  18% {
+    opacity: 0.35;
+    transform: translate3d(2.6%, -1.8%, 0) scale(0.988);
+  }
+  28% {
+    opacity: 0.95;
+    transform: translate3d(-1.8%, -1.1%, 0) scale(1.022);
+  }
+  40% {
+    opacity: 0.4;
+    transform: translate3d(2.1%, 1.6%, 0) scale(0.992);
+  }
+  52% {
+    opacity: 0.88;
+    transform: translate3d(-2.4%, 0.6%, 0) scale(1.014);
+  }
+  64% {
+    opacity: 0.32;
+    transform: translate3d(1.5%, -1.2%, 0) scale(1.006);
+  }
+  76% {
+    opacity: 0.72;
+    transform: translate3d(-1.1%, 0.9%, 0) scale(1.01);
+  }
+  90% {
+    opacity: 0.22;
+    transform: translate3d(0.8%, -0.5%, 0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+.bc-hero__slide.is-exiting .bc-hero__bg-img,
+.bc-hero__slide.is-exiting .bc-hero__layer-img {
+  animation: bc-glitch-slice var(--bc-glitch-dur) steps(4, end) forwards;
+}
+
+.bc-hero__slide.is-entering .bc-hero__bg-img {
+  animation: bc-enter-bg var(--bc-glitch-dur) ease-out forwards;
+}
+
+.bc-hero__slide.is-entering .bc-hero__layer-img {
+  animation: bc-enter-fg var(--bc-glitch-dur) ease-out forwards;
+}
+
+@keyframes bc-glitch-slice {
+  0% {
+    clip-path: inset(0 0 0 0);
+    filter: contrast(1) saturate(1);
+    transform: translate3d(0, 0, 0) skewX(0deg);
+  }
+  9% {
+    clip-path: inset(3% 0 82% 0);
+    filter: contrast(1.55) saturate(1.35) hue-rotate(-12deg)
+      drop-shadow(9px 0 0 rgba(255, 40, 100, 0.72)) drop-shadow(-9px 0 0 rgba(0, 220, 255, 0.62));
+    transform: translate3d(-10px, 1px, 0) skewX(-1.6deg);
+  }
+  22% {
+    clip-path: inset(48% 0 28% 0);
+    filter: contrast(2.05) saturate(1.55) invert(0.14)
+      drop-shadow(11px 0 2px rgba(255, 30, 80, 0.65)) drop-shadow(-11px 0 2px rgba(0, 200, 255, 0.62));
+    transform: translate3d(12px, 2px, 0) skewX(1.65deg);
+  }
+  35% {
+    clip-path: inset(0 22% 0 14%);
+    filter: contrast(1.5) saturate(1.38) hue-rotate(18deg)
+      drop-shadow(7px 0 1px rgba(255, 140, 220, 0.55)) drop-shadow(-7px 0 1px rgba(56, 182, 179, 0.58));
+    transform: translate3d(-9px, -3px, 0) skewX(-1.15deg);
+  }
+  48% {
+    clip-path: inset(14% 10% 62% 8%);
+    filter: contrast(2.2) saturate(1.75) blur(0.75px)
+      drop-shadow(10px 0 0 rgba(255, 70, 150, 0.68)) drop-shadow(-10px 0 0 rgba(0, 190, 255, 0.62));
+    transform: translate3d(8px, 3px, 0) skewX(1.25deg);
+  }
+  62% {
+    clip-path: inset(58% 0 16% 0);
+    filter: contrast(1.85) blur(1.15px) hue-rotate(-12deg)
+      drop-shadow(6px 0 0 rgba(255, 0, 70, 0.48)) drop-shadow(-6px 0 0 rgba(0, 255, 230, 0.48));
+    transform: translate3d(-7px, -1px, 0) skewX(-0.6deg);
+  }
+  78% {
+    clip-path: inset(22% 18% 48% 12%);
+    filter: contrast(1.7) blur(1.8px)
+      drop-shadow(4px 0 0 rgba(255, 100, 180, 0.4)) drop-shadow(-4px 0 0 rgba(56, 182, 179, 0.42));
+    transform: translate3d(5px, 0, 0);
+  }
+  100% {
+    clip-path: inset(0 0 100% 0);
+    filter: contrast(1.2) blur(5px);
+    opacity: 0;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes bc-enter-bg {
+  0% {
+    opacity: 0.12;
+    filter: contrast(1.75) saturate(1.5) blur(3.5px)
+      drop-shadow(10px 0 0 rgba(255, 50, 120, 0.5)) drop-shadow(-10px 0 0 rgba(56, 182, 179, 0.48));
+    transform: scale(1.04) translate3d(0, 0, 0);
+  }
+  38% {
+    opacity: 0.78;
+    filter: contrast(1.45) blur(1.25px)
+      drop-shadow(6px 0 1px rgba(255, 90, 160, 0.32)) drop-shadow(-6px 0 1px rgba(0, 210, 255, 0.3));
+  }
+  100% {
+    opacity: 1;
+    filter: none;
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+}
+
+@keyframes bc-enter-fg {
+  0% {
+    opacity: 0;
+    transform: translate3d(14px, 8px, 0) skewX(2deg);
+    filter: contrast(1.85)
+      drop-shadow(8px 0 0 rgba(255, 40, 100, 0.52)) drop-shadow(-8px 0 0 rgba(0, 220, 255, 0.48));
+  }
+  42% {
+    opacity: 0.9;
+    filter: contrast(1.35)
+      drop-shadow(4px 0 0 rgba(255, 110, 190, 0.28)) drop-shadow(-4px 0 0 rgba(56, 182, 179, 0.28));
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    filter: none;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Reduced motion                                                             */
+/* -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .bc-hero__slide {
+    transition: none;
+  }
+
+  .bc-hero.is-transitioning .bc-hero__noise,
+  .bc-hero__slide.is-exiting .bc-hero__bg-img,
+  .bc-hero__slide.is-exiting .bc-hero__layer-img,
+  .bc-hero__slide.is-entering .bc-hero__bg-img,
+  .bc-hero__slide.is-entering .bc-hero__layer-img {
+    animation: none !important;
+  }
+
+  .bc-hero__slide.is-exiting {
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .bc-hero__person-wrap {
+    transform: none !important;
+    will-change: auto;
+  }
+
+  .bc-hero__globe-wrap {
+    transform: translate3d(calc(-50% - clamp(2.25rem, 14vw, 8.5rem)), -4%, 0) !important;
+    will-change: auto;
+  }
+
+  .bc-hero__progress-fill {
+    transform: scaleX(0) !important;
+    will-change: auto;
+  }
+}
