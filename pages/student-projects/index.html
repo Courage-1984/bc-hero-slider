@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en-ZA">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BC Student Projects Slider — demo</title>
+    <link rel="preconnect" href="https://www.belgiumcampus.ac.za" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="preload"
+      as="image"
+      type="image/png"
+      href="https://www.belgiumcampus.ac.za/wp-content/uploads/2024/09/Campus-background-2.png"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      as="image"
+      type="image/png"
+      href="https://www.belgiumcampus.ac.za/wp-content/uploads/2025/01/BC-student-project-234.png"
+      fetchpriority="high"
+    />
+    <link rel="stylesheet" href="bc-projects-slider.css" />
+    <style>
+      /* Demo page only — not required in WordPress */
+      body {
+        margin: 0;
+        background: #0d0016;
+      }
+    </style>
+    <!--
+      ========== WordPress: Elementor + WPCode ==========
+      WPCode: load bc-projects-slider.css + bc-projects-slider.js.
+      Optional: preload Campus-background-2.png + first person in wp_head.
+      Font: Poppins 600.
+
+      Elementor full-bleed checklist:
+      • Page Layout = Elementor Full Width.
+      • Section/Container: Content Width = Full Width; Columns Gap = No Gap; padding L/R = 0.
+      • Paste only the <section class="bc-projects" …> … </section> block.
+    -->
+  </head>
+  <body>
+    <section
+      class="bc-projects"
+      id="bc-projects"
+      aria-roledescription="carousel"
+      aria-label="Student projects"
+    >
+      <div class="bc-projects__slides">
+        <!-- Slide 1 — drones -->
+        <article class="bc-projects__slide is-active" data-bc-slide="1" aria-hidden="false">
+          <div class="bc-projects__bg">
+            <img
+              class="bc-projects__bg-img"
+              src="https://www.belgiumcampus.ac.za/wp-content/uploads/2024/09/Campus-background-2.png"
+              alt=""
+              width="1920"
+              height="750"
+              decoding="async"
+              fetchpriority="high"
+            />
+          </div>
+          <div class="bc-projects__visual">
+            <div class="bc-projects__icon bc-projects__icon--hud" data-float="a">
+              <img
+                src="https://www.belgiumcampus.ac.za/wp-content/uploads/2025/01/Artwork10_edd82489-025f-4bd2-b6d0-249a00a3b475.png"
+                alt=""
+                width="359"
+                height="357"
+                decoding="async"
+              />
+            </div>
+            <div class="bc-projects__icon bc-projects__icon--drone-br" data-float="b">
+              <img
+                src="https://www.belgiumcampus.ac.za/wp-content/uploads/2025/01/3d_rendering_mini_drone_camera_perspective_view4554.png"
+                alt=""
+                width="203"
+                height="109"
+                decoding="async"
+              />
+            </div>
+            <div class="bc-projects__icon bc-projects__icon--drone-tr" data-float="c">
+              <img
+                src="https://www.belgiumcampus.ac.za/wp-content/uploads/2025/01/3d_rendering_mini_drone_camera_perspective_top.png"
+                alt=""
+                width="147"
+                height="106"
+                decoding="async"
+              />
+            </div>
+            <div class="bc-projects__icon bc-projects__icon--drone-tl" data-float="d">
+              <img
+                src="https://www.belgiumcampus.ac.za/wp-content/uploads/2025/01/3d_rendering_mini_drone_camera_perspective_view.png"
+                alt=""
+                width="170"
+                height="91"
+                decoding="async"
+              />
+            </div>
+            <div class="bc-projects__person bc-projects__person--s1">
+              <img
+                src="https://www.belgiumcampus.ac.za/wp-content/uploads/2025/01/BC-student-project-234.png"
+                alt=""
+                width="422"
+                height="488"
+                decoding="async"
+                fetchpriority="high"
+              />
+            </div>
+          </div>
+        </article>
+
+        <!-- Slide 2 — robots -->
+        <article class="bc-projects__slide" data-bc-slide="2" aria-hidden="true">
+          <div class="bc-projects__bg">
+            <img
+              class="bc-projects__bg-img"
+              src="https://www.belgiumcampus.ac.za/wp-content/uploads/2024/09/Campus-background-2.png"
+              alt=""
+              width="1920"
+              height="750"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="bc-projects__visual">
+            <div class="bc-projects__icon bc-projects__icon--hud" data-float="a">
+              <img
+                src="https://www.belgiumcampus.ac.za/wp-content/uploads/2025/01/Artwork10_edd82489-025f-4bd2-b6d0-249a00a3b475.png"
+                alt=""
+                width="359"
+                height="357"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="bc-projects__icon bc-projects__icon--cam-tr" data-float="b">
+              <img
+                src="https://www.belgiumcampus.ac.za/wp-content/uploads/2025/01/11486412.png12314.png"
+                alt=""
+                width="91"
+                height="87"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="bc-projects__icon bc-projects__icon--cam-mid" data-float="c">
+              <img
+                src="https://www.belgiumcampus.ac.za/wp-content/uploads/2025/01/11486412.png"
+                alt=""
+                width="66"
+                height="63"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="bc-projects__icon bc-projects__icon--robot" data-float="d">
+              <img
+                src="https://www.belgiumcampus.ac.za/wp-content/uploads/2025/01/robot-1.png"
+                alt=""
+                width="124"
+                height="119"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="bc-projects__person bc-projects__person--s2">
+              <img
+                src="https://www.belgiumcampus.ac.za/wp-content/uploads/2025/01/BC-student-project-24515.png"
+                alt=""
+                width="396"
+                height="624"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <h1 class="bc-projects__heading">Student Projects</h1>
+
+      <nav class="bc-projects__nav" aria-label="Slide navigation">
+        <span class="bc-projects__count"
+          ><span data-bc-current>01</span> / <span data-bc-total>02</span></span
+        >
+        <div class="bc-projects__arrows">
+          <button
+            type="button"
+            class="bc-projects__btn"
+            data-bc-projects="prev"
+            aria-label="Previous slide"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false">
+              <path fill="currentColor" d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            class="bc-projects__btn"
+            data-bc-projects="next"
+            aria-label="Next slide"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false">
+              <path fill="currentColor" d="M10 6 8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+            </svg>
+          </button>
+        </div>
+      </nav>
+
+      <div class="bc-projects__progress" aria-hidden="true">
+        <span class="bc-projects__progress-fill"></span>
+      </div>
+    </section>
+
+    <script src="bc-projects-slider.js" defer></script>
+  </body>
+</html>

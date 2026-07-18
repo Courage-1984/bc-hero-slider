@@ -1,0 +1,499 @@
+/**
+ * BC Contact Slider — lightweight, CWV-oriented
+ * Scope: .bc-contact (BEM) to avoid theme collisions
+ * Replaces RevSlider alias: qualifications-11
+ */
+
+.bc-contact {
+  --bc-contact-accent: #2ad2c9;
+  --bc-contact-muted: #54595f;
+  --bc-contact-pad: clamp(1.25rem, 4vw, 3.5rem);
+  --bc-contact-inner-max: 1240px;
+  --bc-contact-fade: 0.45s;
+  --bc-contact-parallax: 10px;
+  position: relative;
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+  isolation: isolate;
+  color: #fff;
+  font-family: Poppins, "Avant Garde Next", sans-serif;
+  background: #0d0016;
+}
+
+@media (max-width: 768px) {
+  .bc-contact {
+    height: auto;
+    min-height: 28rem;
+    aspect-ratio: 4 / 5;
+    max-height: none;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Slides                                                                     */
+/* -------------------------------------------------------------------------- */
+
+.bc-contact__slides {
+  position: absolute;
+  inset: 0;
+}
+
+.bc-contact__slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity var(--bc-contact-fade) ease, visibility 0s linear var(--bc-contact-fade);
+}
+
+.bc-contact__slide.is-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  z-index: 1;
+  transition: opacity var(--bc-contact-fade) ease, visibility 0s linear 0s;
+}
+
+.bc-contact__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.bc-contact__bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Visual stack (right)                                                       */
+/* -------------------------------------------------------------------------- */
+
+.bc-contact__visual {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  right: max(2%, calc(50% - var(--bc-contact-inner-max) / 2));
+  bottom: 0;
+  width: min(52%, 36rem);
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .bc-contact__visual {
+    right: 0;
+    left: 0;
+    width: 100%;
+    top: 28%;
+  }
+}
+
+.bc-contact__icon,
+.bc-contact__person {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  will-change: transform;
+}
+
+.bc-contact__icon img,
+.bc-contact__person img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: none;
+}
+
+.bc-contact__person {
+  z-index: 10;
+  top: 6%;
+  bottom: auto;
+  right: 8%;
+  width: min(68%, 26rem);
+  height: 110%;
+  align-items: flex-start;
+  justify-content: center;
+  overflow: visible;
+}
+
+.bc-contact__person img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+/* --- Slide 1 icon positions --- */
+.bc-contact__icon--hud {
+  z-index: 4;
+  top: -2%;
+  left: 6%;
+  width: 58%;
+}
+
+.bc-contact__icon--code {
+  z-index: 6;
+  bottom: 8%;
+  left: 8%;
+  width: 20%;
+}
+
+.bc-contact__icon--globe {
+  z-index: 6;
+  top: 14%;
+  right: 4%;
+  width: 24%;
+}
+
+.bc-contact__icon--hash {
+  z-index: 8;
+  top: 32%;
+  left: 18%;
+  width: 22%;
+}
+
+.bc-contact__person--s1 {
+  top: 0;
+  right: 14%;
+  width: min(70%, 27rem);
+}
+
+/* --- Slide 2 --- */
+.bc-contact__icon--ring-lg {
+  z-index: 3;
+  top: -4%;
+  left: 2%;
+  width: 62%;
+}
+
+.bc-contact__icon--check {
+  z-index: 6;
+  top: 8%;
+  left: 6%;
+  width: 24%;
+}
+
+.bc-contact__icon--brackets {
+  z-index: 6;
+  bottom: 14%;
+  left: -4%;
+  width: 28%;
+}
+
+.bc-contact__icon--braces-tr {
+  z-index: 6;
+  top: 2%;
+  right: 8%;
+  width: 30%;
+}
+
+.bc-contact__icon--ring-sm {
+  z-index: 8;
+  top: 38%;
+  right: 6%;
+  width: 30%;
+}
+
+.bc-contact__visual--group {
+  width: min(58%, 40rem);
+}
+
+.bc-contact__person--s2 {
+  top: 0;
+  right: 2%;
+  width: min(92%, 36rem);
+  object-fit: contain;
+}
+
+.bc-contact__person--s2 img {
+  object-fit: contain;
+  object-position: bottom center;
+}
+
+/* --- Slide 3 --- */
+.bc-contact__icon--binary {
+  z-index: 2;
+  top: -2%;
+  left: -18%;
+  width: 118%;
+  opacity: 0.92;
+}
+
+.bc-contact__icon--hud-teal {
+  z-index: 4;
+  top: -4%;
+  left: 8%;
+  width: 58%;
+}
+
+.bc-contact__icon--braces-r {
+  z-index: 7;
+  top: 34%;
+  right: 2%;
+  width: 24%;
+}
+
+.bc-contact__icon--code-bl {
+  z-index: 6;
+  bottom: -8%;
+  left: 0;
+  width: 26%;
+}
+
+.bc-contact__person--s3 {
+  top: 4%;
+  right: 12%;
+  width: min(72%, 28rem);
+}
+
+@media (max-width: 768px) {
+  .bc-contact__visual--group {
+    width: 100%;
+  }
+
+  .bc-contact__person,
+  .bc-contact__person--s1,
+  .bc-contact__person--s2,
+  .bc-contact__person--s3 {
+    right: 50%;
+    left: auto;
+    transform: translateX(50%);
+    width: min(78%, 18rem);
+    top: 0;
+    height: 100%;
+  }
+
+  .bc-contact__person--s2 {
+    width: min(96%, 22rem);
+  }
+
+  .bc-contact__icon {
+    opacity: 0.85;
+  }
+
+  .bc-contact__icon--binary {
+    left: -10%;
+    width: 120%;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Soft float / rotate (CSS-only loop — replaces RS particle + loop layers)   */
+/* -------------------------------------------------------------------------- */
+
+.bc-contact__slide.is-active .bc-contact__icon[data-float="a"] {
+  animation: bc-contact-float-a 7s ease-in-out infinite;
+}
+
+.bc-contact__slide.is-active .bc-contact__icon[data-float="b"] {
+  animation: bc-contact-float-b 8.5s ease-in-out infinite;
+}
+
+.bc-contact__slide.is-active .bc-contact__icon[data-float="c"] {
+  animation: bc-contact-float-c 6.5s ease-in-out infinite;
+}
+
+.bc-contact__slide.is-active .bc-contact__icon[data-float="d"] {
+  animation: bc-contact-float-d 9s ease-in-out infinite;
+}
+
+.bc-contact__slide.is-active .bc-contact__icon[data-float="e"] {
+  animation: bc-contact-float-e 7.5s ease-in-out infinite;
+}
+
+@keyframes bc-contact-float-a {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-2deg);
+  }
+  50% {
+    transform: translate3d(0, -10px, 0) rotate(2.5deg);
+  }
+}
+
+@keyframes bc-contact-float-b {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(3deg);
+  }
+  50% {
+    transform: translate3d(6px, -8px, 0) rotate(-3deg);
+  }
+}
+
+@keyframes bc-contact-float-c {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-1.5deg);
+  }
+  50% {
+    transform: translate3d(-6px, 8px, 0) rotate(2deg);
+  }
+}
+
+@keyframes bc-contact-float-d {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(2deg);
+  }
+  50% {
+    transform: translate3d(4px, -12px, 0) rotate(-2.5deg);
+  }
+}
+
+@keyframes bc-contact-float-e {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-2.5deg);
+  }
+  50% {
+    transform: translate3d(-5px, -6px, 0) rotate(2deg);
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Static headline                                                            */
+/* -------------------------------------------------------------------------- */
+
+.bc-contact__heading {
+  position: absolute;
+  z-index: 5;
+  left: max(var(--bc-contact-pad), calc(50% - var(--bc-contact-inner-max) / 2));
+  top: 35%;
+  transform: translateY(-50%);
+  margin: 0;
+  max-width: 12ch;
+  white-space: normal;
+  font-weight: 600;
+  font-size: clamp(2.25rem, 4.2vw, 3.75rem);
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+  color: var(--bc-contact-accent);
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .bc-contact__heading {
+    top: 1.25rem;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 92%;
+    white-space: normal;
+    text-align: center;
+    text-wrap: balance;
+    font-size: clamp(1.45rem, 6vw, 1.9rem);
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Nav + progress                                                             */
+/* -------------------------------------------------------------------------- */
+
+.bc-contact__nav {
+  position: absolute;
+  left: max(var(--bc-contact-pad), calc(50% - var(--bc-contact-inner-max) / 2));
+  bottom: 1.25rem;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--bc-contact-muted);
+}
+
+.bc-contact__arrows {
+  display: flex;
+  gap: 0.3rem;
+}
+
+.bc-contact__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  padding: 0;
+  border: 1px solid rgba(84, 89, 95, 0.35);
+  background: rgba(255, 255, 255, 0.55);
+  color: var(--bc-contact-muted);
+  border-radius: 2px;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.bc-contact__btn:hover {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: var(--bc-contact-accent);
+  color: #0d0016;
+}
+
+.bc-contact__btn:focus-visible {
+  outline: 2px solid var(--bc-contact-accent);
+  outline-offset: 2px;
+}
+
+.bc-contact__btn svg {
+  width: 1rem;
+  height: 1rem;
+  display: block;
+}
+
+.bc-contact__progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 2px;
+  z-index: 7;
+  pointer-events: none;
+  background: rgba(84, 89, 95, 0.15);
+  overflow: hidden;
+}
+
+.bc-contact__progress-fill {
+  display: block;
+  height: 100%;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: left center;
+  background: var(--bc-contact-accent);
+  will-change: transform;
+}
+
+@media (max-width: 768px) {
+  .bc-contact__nav {
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0.85rem;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Reduced motion                                                             */
+/* -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .bc-contact__slide {
+    transition: none;
+  }
+
+  .bc-contact__slide.is-active .bc-contact__icon[data-float] {
+    animation: none !important;
+  }
+
+  .bc-contact__progress-fill {
+    transform: scaleX(0) !important;
+    will-change: auto;
+  }
+}

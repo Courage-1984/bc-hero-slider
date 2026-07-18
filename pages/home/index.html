@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en-ZA">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BC Hero Slider — demo</title>
+    <!-- LCP: preload the first slide background (match Slide 1 src exactly) -->
+    <link rel="preconnect" href="https://www.belgiumcampus.ac.za" crossorigin />
+    <link
+      rel="preload"
+      as="image"
+      type="image/webp"
+      href="https://www.belgiumcampus.ac.za/wp-content/uploads/2025/12/Heal-2_optimizedNEW.webp"
+      fetchpriority="high"
+    />
+    <link rel="stylesheet" href="bc-hero-slider.css" />
+    <style>
+      /* Demo page only — not required in WordPress */
+      body {
+        margin: 0;
+        background: #061226;
+      }
+    </style>
+    <!--
+      ========== WordPress: Elementor + WPCode ==========
+      WPCode: load bc-hero-slider.css + bc-hero-slider.js. Optional: preload first slide bg in wp_head. Typography uses Avant Garde stack (host webfonts in theme if needed).
+
+      Elementor full-bleed checklist (no side gaps / no horizontal scroll):
+      • Page Settings → Page Layout = Elementor Full Width (not Default or Theme).
+      • Section (or outermost Container): Layout → Content Width = Full Width; Columns Gap = No Gap.
+      • Section: Advanced → Layout → HTML Tag = default or "section"; set Width = 100% if the UI offers it.
+      • Section: Advanced → Padding = 0 on left/right (unlink sides); Margin = 0 (or match your theme).
+      • Remove any max-width on the section (Advanced → Custom CSS if a class constrains width).
+      • Inner Container (if any wrapping the HTML widget): Content Width = Full Width; padding L/R = 0.
+      • Custom HTML widget: Advanced → Padding = 0; Margin = 0; Width = 100% / Inherit container stretch.
+      • Paste only the <section class="bc-hero" …> … </section> block (no duplicate <html>/<body>).
+      • If overflow-x appears site-wide, check header/footer width; the hero uses width:100%; overflow:hidden on .bc-hero.
+    -->
+  </head>
+  <body>
+    <section
+      class="bc-hero"
+      id="bc-hero"
+      aria-roledescription="carousel"
+      aria-label="Featured programmes"
+    >
+      <div class="bc-hero__slides">
+        <!-- Slide 1 — initial paint: no JS required; first images not lazy -->
+        <article class="bc-hero__slide is-active" data-bc-slide="1" aria-hidden="false">
+          <div class="bc-hero__bg">
+            <img
+              class="bc-hero__bg-img"
+              src="https://www.belgiumcampus.ac.za/wp-content/uploads/2025/12/Heal-2_optimizedNEW.webp"
+              alt=""
+              width="1920"
+              height="800"
+              decoding="async"
+              fetchpriority="high"
+            />
+          </div>
+          <div class="bc-hero__scrim" aria-hidden="true"></div>
+          <div class="bc-hero__inner">
+            <div class="bc-hero__copy">
+              <div class="bc-hero__accent" aria-hidden="true"></div>
+              <h1 class="bc-hero__heading">Study IT</h1>
+              <p class="bc-hero__sub">and Heal the World</p>
+            </div>
+            <div class="bc-hero__visual">
+              <div class="bc-hero__layer bc-hero__globe-wrap">
+                <img
+                  class="bc-hero__layer-img"
+                  src="https://www.belgiumcampus.ac.za/wp-content/uploads/2025/12/Economic-overlay_optimizedNEW.webp"
+                  alt=""
+                  width="900"
+                  height="900"
+                  decoding="async"
+                />
+              </div>
+              <div class="bc-hero__layer bc-hero__person-wrap">
+                <img
+                  class="bc-hero__layer-img"
+                  src="https://www.belgiumcampus.ac.za/wp-content/uploads/2025/12/Heal_optimizedNEW.webp"
+                  alt=""
+                  width="900"
+                  height="900"
+                  decoding="async"
+                />
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Slides 2–4: lazy images; hidden until activated by JS -->
+        <article class="bc-hero__slide" data-bc-slide="2" aria-hidden="true">
+          <div class="bc-hero__bg">
+            <img
+              class="bc-hero__bg-img"
+              src="https://www.belgiumcampus.ac.za/wp-content/uploads/2025/12/Automation-background_optimizedNEW.webp"
+              alt=""
+              width="1920"
+              height="800"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="bc-hero__scrim" aria-hidden="true"></div>
+          <div class="bc-hero__inner">
+            <div class="bc-hero__copy">
+              <div class="bc-hero__accent" aria-hidden="true"></div>
+              <h2 class="bc-hero__heading">Study Software Engineering</h2>
+              <p class="bc-hero__sub">and Drive Lasting Innovation</p>
+            </div>
+            <div class="bc-hero__visual">
+              <div class="bc-hero__layer bc-hero__globe-wrap">
+                <img
+                  class="bc-hero__layer-img"
+                  src="https://www.belgiumcampus.ac.za/wp-content/uploads/2025/12/Economic-overlay_optimizedNEW.webp"
+                  alt=""
+                  width="900"
+                  height="900"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <div class="bc-hero__layer bc-hero__person-wrap">
+                <img
+                  class="bc-hero__layer-img"
+                  src="https://www.belgiumcampus.ac.za/wp-content/uploads/2025/12/Aotomation_optimizedNEW.webp"
+                  alt=""
+                  width="900"
+                  height="900"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="bc-hero__slide" data-bc-slide="3" aria-hidden="true">
+          <div class="bc-hero__bg">
+            <img
+              class="bc-hero__bg-img"
+              src="https://www.belgiumcampus.ac.za/wp-content/uploads/2025/12/grow-a-better-tomorrow-background_optimizedNEW.webp"
+              alt=""
+              width="1920"
+              height="800"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="bc-hero__scrim" aria-hidden="true"></div>
+          <div class="bc-hero__inner">
+            <div class="bc-hero__copy">
+              <div class="bc-hero__accent" aria-hidden="true"></div>
+              <h2 class="bc-hero__heading">Study Data Science</h2>
+              <p class="bc-hero__sub">and Grow a Brighter Tomorrow</p>
+            </div>
+            <div class="bc-hero__visual">
+              <div class="bc-hero__layer bc-hero__globe-wrap">
+                <img
+                  class="bc-hero__layer-img"
+                  src="https://www.belgiumcampus.ac.za/wp-content/uploads/2025/12/Economic-overlay_optimizedNEW.webp"
+                  alt=""
+                  width="900"
+                  height="900"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <div class="bc-hero__layer bc-hero__person-wrap">
+                <img
+                  class="bc-hero__layer-img"
+                  src="https://www.belgiumcampus.ac.za/wp-content/uploads/2025/12/Grow-a-better-tomorrow_optimizedNEW.webp"
+                  alt=""
+                  width="900"
+                  height="900"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="bc-hero__slide" data-bc-slide="4" aria-hidden="true">
+          <div class="bc-hero__bg">
+            <img
+              class="bc-hero__bg-img"
+              src="https://www.belgiumcampus.ac.za/wp-content/uploads/2025/12/Economic-2_optimizedNEW.webp"
+              alt=""
+              width="1920"
+              height="800"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="bc-hero__scrim" aria-hidden="true"></div>
+          <div class="bc-hero__inner">
+            <div class="bc-hero__copy">
+              <div class="bc-hero__accent" aria-hidden="true"></div>
+              <h2 class="bc-hero__heading">Study Cyber Security</h2>
+              <p class="bc-hero__sub">and Empower Global Economies</p>
+            </div>
+            <div class="bc-hero__visual">
+              <div class="bc-hero__layer bc-hero__globe-wrap">
+                <img
+                  class="bc-hero__layer-img"
+                  src="https://www.belgiumcampus.ac.za/wp-content/uploads/2025/12/Economic-overlay_optimizedNEW.webp"
+                  alt=""
+                  width="900"
+                  height="900"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <div class="bc-hero__layer bc-hero__person-wrap">
+                <img
+                  class="bc-hero__layer-img"
+                  src="https://www.belgiumcampus.ac.za/wp-content/uploads/2025/12/Economic_optimizedNEW.webp"
+                  alt=""
+                  width="900"
+                  height="900"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="bc-hero__noise" aria-hidden="true"></div>
+
+      <nav class="bc-hero__nav" aria-label="Slide navigation">
+        <span class="bc-hero__count"
+          ><span data-bc-current>01</span> / <span data-bc-total>04</span></span
+        >
+        <div class="bc-hero__arrows">
+          <button
+            type="button"
+            class="bc-hero__btn bc-hero__nav-btn"
+            data-bc-hero="prev"
+            aria-label="Previous slide"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false">
+              <path fill="#ffffff" d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            class="bc-hero__btn bc-hero__nav-btn"
+            data-bc-hero="next"
+            aria-label="Next slide"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false">
+              <path fill="#ffffff" d="M10 6 8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+            </svg>
+          </button>
+        </div>
+      </nav>
+
+      <div class="bc-hero__progress" aria-hidden="true">
+        <span class="bc-hero__progress-fill"></span>
+      </div>
+    </section>
+
+    <script src="bc-hero-slider.js" defer></script>
+  </body>
+</html>

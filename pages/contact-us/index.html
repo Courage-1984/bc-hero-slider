@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en-ZA">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BC Contact Slider — demo</title>
+    <link rel="preconnect" href="https://www.belgiumcampus.ac.za" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- LCP: preload shared bg + first slide person -->
+    <link
+      rel="preload"
+      as="image"
+      type="image/jpeg"
+      href="https://www.belgiumcampus.ac.za/wp-content/uploads/2023/03/4912167-scaled.jpg"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      as="image"
+      type="image/png"
+      href="https://www.belgiumcampus.ac.za/wp-content/uploads/2023/08/Student-of-BC.png"
+      fetchpriority="high"
+    />
+    <link rel="stylesheet" href="bc-contact-slider.css" />
+    <style>
+      /* Demo page only — not required in WordPress */
+      body {
+        margin: 0;
+        background: #0d0016;
+      }
+    </style>
+    <!--
+      ========== WordPress: Elementor + WPCode ==========
+      WPCode: load bc-contact-slider.css + bc-contact-slider.js. Optional: preload bg + first person in wp_head.
+      Font: Poppins 600 (theme webfont or Google Fonts).
+
+      Elementor full-bleed checklist:
+      • Page Layout = Elementor Full Width.
+      • Section/Container: Content Width = Full Width; Columns Gap = No Gap; padding L/R = 0.
+      • Paste only the <section class="bc-contact" …> … </section> block.
+    -->
+  </head>
+  <body>
+    <section
+      class="bc-contact"
+      id="bc-contact"
+      aria-roledescription="carousel"
+      aria-label="Contact us"
+    >
+      <div class="bc-contact__slides">
+        <!-- Slide 1 — Student-of-BC -->
+        <article class="bc-contact__slide is-active" data-bc-slide="1" aria-hidden="false">
+          <div class="bc-contact__bg">
+            <img
+              class="bc-contact__bg-img"
+              src="https://www.belgiumcampus.ac.za/wp-content/uploads/2023/03/4912167-scaled.jpg"
+              alt=""
+              width="1920"
+              height="750"
+              decoding="async"
+              fetchpriority="high"
+            />
+          </div>
+          <div class="bc-contact__visual">
+            <div class="bc-contact__icon bc-contact__icon--hud" data-float="a">
+              <img
+                src="https://www.belgiumcampus.ac.za/wp-content/uploads/2023/06/Element-3.png"
+                alt=""
+                width="359"
+                height="335"
+                decoding="async"
+              />
+            </div>
+            <div class="bc-contact__icon bc-contact__icon--code" data-float="b">
+              <img
+                src="https://www.belgiumcampus.ac.za/wp-content/uploads/2023/06/Element-4-1.png"
+                alt=""
+                width="153"
+                height="153"
+                decoding="async"
+              />
+            </div>
+            <div class="bc-contact__icon bc-contact__icon--globe" data-float="c">
+              <img
+                src="https://www.belgiumcampus.ac.za/wp-content/uploads/2023/06/Element-2-1.png"
+                alt=""
+                width="147"
+                height="147"
+                decoding="async"
+              />
+            </div>
+            <div class="bc-contact__icon bc-contact__icon--hash" data-float="d">
+              <img
+                src="https://www.belgiumcampus.ac.za/wp-content/uploads/2023/06/Element-3-1.png"
+                alt=""
+                width="134"
+                height="134"
+                decoding="async"
+              />
+            </div>
+            <div class="bc-contact__person bc-contact__person--s1">
+              <img
+                src="https://www.belgiumcampus.ac.za/wp-content/uploads/2023/08/Student-of-BC.png"
+                alt=""
+                width="435"
+                height="762"
+                decoding="async"
+                fetchpriority="high"
+              />
+            </div>
+          </div>
+        </article>
+
+        <!-- Slide 2 — BC student group -->
+        <article class="bc-contact__slide" data-bc-slide="2" aria-hidden="true">
+          <div class="bc-contact__bg">
+            <img
+              class="bc-contact__bg-img"
+              src="https://www.belgiumcampus.ac.za/wp-content/uploads/2023/03/4912167-scaled.jpg"
+              alt=""
+              width="1920"
+              height="750"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="bc-contact__visual bc-contact__visual--group">
+            <div class="bc-contact__icon bc-contact__icon--ring-lg" data-float="a">
+              <img
+                src="https://www.belgiumcampus.ac.za/wp-content/uploads/2023/06/Element-2.png"
+                alt=""
+                width="373"
+                height="348"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="bc-contact__icon bc-contact__icon--check" data-float="b">
+              <img
+                src="https://www.belgiumcampus.ac.za/wp-content/uploads/2023/06/Element-1-1.png"
+                alt=""
+                width="146"
+                height="146"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="bc-contact__icon bc-contact__icon--brackets" data-float="c">
+              <img
+                src="https://www.belgiumcampus.ac.za/wp-content/uploads/2023/06/Element-4-1.png"
+                alt=""
+                width="178"
+                height="178"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="bc-contact__icon bc-contact__icon--braces-tr" data-float="d">
+              <img
+                src="https://www.belgiumcampus.ac.za/wp-content/uploads/2023/06/Element-5.png"
+                alt=""
+                width="169"
+                height="169"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="bc-contact__person bc-contact__person--s2">
+              <img
+                src="https://www.belgiumcampus.ac.za/wp-content/uploads/2023/08/BC-student-group.png"
+                alt=""
+                width="580"
+                height="865"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </div>
+        </article>
+
+        <!-- Slide 3 — student-6 + binary -->
+        <article class="bc-contact__slide" data-bc-slide="3" aria-hidden="true">
+          <div class="bc-contact__bg">
+            <img
+              class="bc-contact__bg-img"
+              src="https://www.belgiumcampus.ac.za/wp-content/uploads/2023/03/4912167-scaled.jpg"
+              alt=""
+              width="1920"
+              height="750"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="bc-contact__visual">
+            <div class="bc-contact__icon bc-contact__icon--binary" data-float="a">
+              <img
+                src="https://www.belgiumcampus.ac.za/wp-content/uploads/2023/06/Code.png"
+                alt=""
+                width="737"
+                height="574"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="bc-contact__icon bc-contact__icon--hud-teal" data-float="b">
+              <img
+                src="https://www.belgiumcampus.ac.za/wp-content/uploads/2023/06/Element-4.png"
+                alt=""
+                width="359"
+                height="336"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="bc-contact__icon bc-contact__icon--braces-r" data-float="c">
+              <img
+                src="https://www.belgiumcampus.ac.za/wp-content/uploads/2023/06/Element-5.png"
+                alt=""
+                width="142"
+                height="142"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="bc-contact__icon bc-contact__icon--code-bl" data-float="d">
+              <img
+                src="https://www.belgiumcampus.ac.za/wp-content/uploads/2023/06/Element-4-1.png"
+                alt=""
+                width="166"
+                height="166"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="bc-contact__person bc-contact__person--s3">
+              <img
+                src="https://www.belgiumcampus.ac.za/wp-content/uploads/2023/08/student-6.png"
+                alt=""
+                width="461"
+                height="674"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <h1 class="bc-contact__heading">Contact Us</h1>
+
+      <nav class="bc-contact__nav" aria-label="Slide navigation">
+        <span class="bc-contact__count"
+          ><span data-bc-current>01</span> / <span data-bc-total>03</span></span
+        >
+        <div class="bc-contact__arrows">
+          <button
+            type="button"
+            class="bc-contact__btn"
+            data-bc-contact="prev"
+            aria-label="Previous slide"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false">
+              <path fill="currentColor" d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            class="bc-contact__btn"
+            data-bc-contact="next"
+            aria-label="Next slide"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false">
+              <path fill="currentColor" d="M10 6 8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+            </svg>
+          </button>
+        </div>
+      </nav>
+
+      <div class="bc-contact__progress" aria-hidden="true">
+        <span class="bc-contact__progress-fill"></span>
+      </div>
+    </section>
+
+    <script src="bc-contact-slider.js" defer></script>
+  </body>
+</html>

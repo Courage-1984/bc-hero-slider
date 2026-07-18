@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en-ZA">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BC Qualifications Slider — demo</title>
+    <link rel="preconnect" href="https://www.belgiumcampus.ac.za" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- LCP: preload shared bg + first slide person -->
+    <link
+      rel="preload"
+      as="image"
+      type="image/jpeg"
+      href="https://www.belgiumcampus.ac.za/wp-content/uploads/2023/03/4912167-scaled.jpg"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      as="image"
+      type="image/png"
+      href="https://www.belgiumcampus.ac.za/wp-content/uploads/2023/06/Belgium-Campus-Student.2-min.png"
+      fetchpriority="high"
+    />
+    <link rel="stylesheet" href="bc-qual-slider.css" />
+    <style>
+      /* Demo page only — not required in WordPress */
+      body {
+        margin: 0;
+        background: #0d0016;
+      }
+    </style>
+    <!--
+      ========== WordPress: Elementor + WPCode ==========
+      WPCode: load bc-qual-slider.css + bc-qual-slider.js. Optional: preload bg + first person in wp_head.
+      Font: Poppins 600 (theme webfont or Google Fonts).
+
+      Elementor full-bleed checklist:
+      • Page Layout = Elementor Full Width.
+      • Section/Container: Content Width = Full Width; Columns Gap = No Gap; padding L/R = 0.
+      • Paste only the <section class="bc-qual" …> … </section> block.
+    -->
+  </head>
+  <body>
+    <section
+      class="bc-qual"
+      id="bc-qual"
+      aria-roledescription="carousel"
+      aria-label="IT courses we offer"
+    >
+      <div class="bc-qual__slides">
+        <!-- Slide 1 — Student.2 (pointing) -->
+        <article class="bc-qual__slide is-active" data-bc-slide="1" aria-hidden="false">
+          <div class="bc-qual__bg">
+            <img
+              class="bc-qual__bg-img"
+              src="https://www.belgiumcampus.ac.za/wp-content/uploads/2023/03/4912167-scaled.jpg"
+              alt=""
+              width="1920"
+              height="750"
+              decoding="async"
+              fetchpriority="high"
+            />
+          </div>
+          <div class="bc-qual__visual">
+            <div class="bc-qual__icon bc-qual__icon--hud" data-float="a">
+              <img
+                src="https://www.belgiumcampus.ac.za/wp-content/uploads/2023/06/Element-3.png"
+                alt=""
+                width="359"
+                height="335"
+                decoding="async"
+              />
+            </div>
+            <div class="bc-qual__icon bc-qual__icon--code" data-float="b">
+              <img
+                src="https://www.belgiumcampus.ac.za/wp-content/uploads/2023/06/Element-4-1.png"
+                alt=""
+                width="125"
+                height="125"
+                decoding="async"
+              />
+            </div>
+            <div class="bc-qual__icon bc-qual__icon--globe" data-float="c">
+              <img
+                src="https://www.belgiumcampus.ac.za/wp-content/uploads/2023/06/Element-2-1.png"
+                alt=""
+                width="147"
+                height="147"
+                decoding="async"
+              />
+            </div>
+            <div class="bc-qual__icon bc-qual__icon--hash" data-float="d">
+              <img
+                src="https://www.belgiumcampus.ac.za/wp-content/uploads/2023/06/Element-3-1.png"
+                alt=""
+                width="134"
+                height="134"
+                decoding="async"
+              />
+            </div>
+            <div class="bc-qual__person bc-qual__person--s1">
+              <img
+                src="https://www.belgiumcampus.ac.za/wp-content/uploads/2023/06/Belgium-Campus-Student.2-min.png"
+                alt=""
+                width="435"
+                height="627"
+                decoding="async"
+                fetchpriority="high"
+              />
+            </div>
+          </div>
+        </article>
+
+        <!-- Slide 2 — Student.3 (space buns) -->
+        <article class="bc-qual__slide" data-bc-slide="2" aria-hidden="true">
+          <div class="bc-qual__bg">
+            <img
+              class="bc-qual__bg-img"
+              src="https://www.belgiumcampus.ac.za/wp-content/uploads/2023/03/4912167-scaled.jpg"
+              alt=""
+              width="1920"
+              height="750"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="bc-qual__visual">
+            <div class="bc-qual__icon bc-qual__icon--ring-lg" data-float="a">
+              <img
+                src="https://www.belgiumcampus.ac.za/wp-content/uploads/2023/06/Element-2.png"
+                alt=""
+                width="373"
+                height="348"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="bc-qual__icon bc-qual__icon--check" data-float="b">
+              <img
+                src="https://www.belgiumcampus.ac.za/wp-content/uploads/2023/06/Element-1-1.png"
+                alt=""
+                width="146"
+                height="146"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="bc-qual__icon bc-qual__icon--brackets" data-float="c">
+              <img
+                src="https://www.belgiumcampus.ac.za/wp-content/uploads/2023/06/Element-4-1.png"
+                alt=""
+                width="178"
+                height="178"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="bc-qual__icon bc-qual__icon--braces-tr" data-float="d">
+              <img
+                src="https://www.belgiumcampus.ac.za/wp-content/uploads/2023/06/Element-5.png"
+                alt=""
+                width="188"
+                height="188"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="bc-qual__icon bc-qual__icon--ring-sm" data-float="e">
+              <img
+                src="https://www.belgiumcampus.ac.za/wp-content/uploads/2023/06/Element-1.png"
+                alt=""
+                width="190"
+                height="178"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="bc-qual__person bc-qual__person--s2">
+              <img
+                src="https://www.belgiumcampus.ac.za/wp-content/uploads/2023/06/Belgium-Campus-Student.3-min.png"
+                alt=""
+                width="375"
+                height="782"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </div>
+        </article>
+
+        <!-- Slide 3 — lady + binary code -->
+        <article class="bc-qual__slide" data-bc-slide="3" aria-hidden="true">
+          <div class="bc-qual__bg">
+            <img
+              class="bc-qual__bg-img"
+              src="https://www.belgiumcampus.ac.za/wp-content/uploads/2023/03/4912167-scaled.jpg"
+              alt=""
+              width="1920"
+              height="750"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="bc-qual__visual">
+            <div class="bc-qual__icon bc-qual__icon--binary" data-float="a">
+              <img
+                src="https://www.belgiumcampus.ac.za/wp-content/uploads/2023/06/Code.png"
+                alt=""
+                width="737"
+                height="574"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="bc-qual__icon bc-qual__icon--hud-teal" data-float="b">
+              <img
+                src="https://www.belgiumcampus.ac.za/wp-content/uploads/2023/06/Element-4.png"
+                alt=""
+                width="359"
+                height="336"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="bc-qual__icon bc-qual__icon--braces-r" data-float="c">
+              <img
+                src="https://www.belgiumcampus.ac.za/wp-content/uploads/2023/06/Element-5.png"
+                alt=""
+                width="142"
+                height="142"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="bc-qual__icon bc-qual__icon--code-bl" data-float="d">
+              <img
+                src="https://www.belgiumcampus.ac.za/wp-content/uploads/2023/06/Element-4-1.png"
+                alt=""
+                width="166"
+                height="166"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="bc-qual__person bc-qual__person--s3">
+              <img
+                src="https://www.belgiumcampus.ac.za/wp-content/uploads/2023/06/lady-min-min.png"
+                alt=""
+                width="372"
+                height="510"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </div>
+        </article>
+
+        <!-- Slide 4 — Student-min (glasses, arms crossed) -->
+        <article class="bc-qual__slide" data-bc-slide="4" aria-hidden="true">
+          <div class="bc-qual__bg">
+            <img
+              class="bc-qual__bg-img"
+              src="https://www.belgiumcampus.ac.za/wp-content/uploads/2023/03/4912167-scaled.jpg"
+              alt=""
+              width="1920"
+              height="750"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="bc-qual__visual">
+            <div class="bc-qual__icon bc-qual__icon--hud-s4" data-float="a">
+              <img
+                src="https://www.belgiumcampus.ac.za/wp-content/uploads/2023/06/Element-4.png"
+                alt=""
+                width="359"
+                height="336"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="bc-qual__icon bc-qual__icon--code-s4" data-float="b">
+              <img
+                src="https://www.belgiumcampus.ac.za/wp-content/uploads/2023/06/Element-4-1.png"
+                alt=""
+                width="157"
+                height="157"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="bc-qual__icon bc-qual__icon--braces-s4" data-float="c">
+              <img
+                src="https://www.belgiumcampus.ac.za/wp-content/uploads/2023/06/Element-5.png"
+                alt=""
+                width="157"
+                height="157"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="bc-qual__person bc-qual__person--s4">
+              <img
+                src="https://www.belgiumcampus.ac.za/wp-content/uploads/2023/06/Belgium-Campus-Student-min.png"
+                alt=""
+                width="324"
+                height="892"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Static headline (shared across slides) -->
+      <h1 class="bc-qual__heading">
+        The <span class="bc-qual__heading-muted">IT Courses</span> We Offer
+      </h1>
+
+      <nav class="bc-qual__nav" aria-label="Slide navigation">
+        <span class="bc-qual__count"
+          ><span data-bc-current>01</span> / <span data-bc-total>04</span></span
+        >
+        <div class="bc-qual__arrows">
+          <button
+            type="button"
+            class="bc-qual__btn"
+            data-bc-qual="prev"
+            aria-label="Previous slide"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false">
+              <path fill="currentColor" d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            class="bc-qual__btn"
+            data-bc-qual="next"
+            aria-label="Next slide"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false">
+              <path fill="currentColor" d="M10 6 8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+            </svg>
+          </button>
+        </div>
+      </nav>
+
+      <div class="bc-qual__progress" aria-hidden="true">
+        <span class="bc-qual__progress-fill"></span>
+      </div>
+    </section>
+
+    <script src="bc-qual-slider.js" defer></script>
+  </body>
+</html>
