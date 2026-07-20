@@ -468,11 +468,11 @@
   position: absolute;
   left: 0;
   right: 0;
-  top: 0;
+  bottom: 0;
   height: 2px;
-  z-index: 7;
+  z-index: 6;
   pointer-events: none;
-  background: rgba(84, 89, 95, 0.15);
+  background: rgba(255, 255, 255, 0.1);
   overflow: hidden;
 }
 

@@ -15,7 +15,7 @@
   var SEL_PROGRESS = ".bc-contact__progress-fill";
   var SEL_VISUAL = ".bc-contact__visual";
 
-  var AUTOPLAY_MS = 5500;
+  var AUTOPLAY_MS = 6000;
   /** Keep in sync with --bc-contact-fade in CSS (0.45s → 450) */
   var TRANS_MS = 450;
 

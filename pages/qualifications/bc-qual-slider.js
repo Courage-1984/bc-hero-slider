@@ -15,7 +15,7 @@
   var SEL_PROGRESS = ".bc-qual__progress-fill";
   var SEL_VISUAL = ".bc-qual__visual";
 
-  var AUTOPLAY_MS = 5500;
+  var AUTOPLAY_MS = 6000;
   /** Keep in sync with --bc-qual-fade in CSS (0.45s → 450) */
   var TRANS_MS = 450;
 
